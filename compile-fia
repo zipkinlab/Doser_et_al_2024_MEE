@@ -1,5 +1,0 @@
-R CMD BATCH '--no-save' code/fia/main-nonspatial.R main-nonspatial.out &
-R CMD BATCH '--no-save' code/fia/main-ecoregion.R main-ecoregion.out &
-R CMD BATCH '--no-save' code/fia/main-sp.R main-sp.out &
-R CMD BATCH '--no-save' code/fia/main-sp-ecoregion.R main-sp-ecoregion.out &
-
