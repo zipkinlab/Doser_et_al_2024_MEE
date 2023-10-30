@@ -17,7 +17,7 @@ code/logo/
 code/nmix-sim/
 code/swiss-mhb/
 code/testing/
-compile-fia/
+compile-fia
 spAbundance/
 *.tar.gz
 spAbundance.Rcheck/
