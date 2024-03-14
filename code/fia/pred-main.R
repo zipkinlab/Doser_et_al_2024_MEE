@@ -6,9 +6,11 @@
 rm(list = ls())
 library(spAbundance)
 
+# NOTE: this script will not run as the full model results are too large
+#       for GitHub. Result files can be produced by running the "main-*" files, 
+#       which will then allow you to run this script (changing the directories below)
+
 # Read in model output object ---------------------------------------------
-# This object is not available on GitHub, so this script will not run
-# successfully. 
 load("/mnt/disk4/jeff/DFKZ23/results/fia-sp-ecoregion-full.rda")
 
 # Load the data -----------------------------------------------------------

@@ -1,4 +1,4 @@
-# get-waic-and-samples.rda: this script extrcts the WAIC for each of the 
+# get-waic-and-samples.rda: this script extracts the WAIC for each of the 
 #                           four candidate models. This script will not 
 #                           run on GitHub, as the model objects are too 
 #                           large. The objects created by the script are
@@ -7,6 +7,10 @@
 rm(list = ls())
 library(spAbundance)
 library(coda)
+
+# NOTE: this script will not run as the full model results are too large
+#       for GitHub. Result files can be produced by running the "main-*" files, 
+#       which will then allow you to run this script (changing the directories below)
 
 # Load model results ------------------------------------------------------
 # These are not available on GitHub.

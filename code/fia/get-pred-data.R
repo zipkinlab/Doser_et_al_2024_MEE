@@ -14,6 +14,9 @@ library(rasterVis)
 library(elevatr)
 library(cowplot)
 
+# NOTE: this script will not run as the raw FIA data are not included on 
+#       GitHub. Contact the first author (doserjef@msu.edu) if you want to run this.
+
 # Get area of prediction --------------------------------------------------
 my.proj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=km +no_defs"
 usa <- st_as_sf(maps::map("state", fill = TRUE, plot = FALSE))
@@ -25,8 +28,8 @@ grid.pred <- st_as_stars(st_bbox(usa), dx = 5, dy = 5)
 coords.pred <- as.data.frame(grid.pred, center = TRUE)
 # Convert coordinates to an sf object
 coords.pred.sf <- st_as_sf(coords.pred, 
-			   coords = c('x', 'y'), 
-			   crs = my.proj)
+                           coords = c('x', 'y'), 
+                           crs = my.proj)
 
 # Intersect with region of interest
 coords.pred.sf <- st_intersection(coords.pred.sf, st_make_valid(usa))
@@ -46,15 +49,15 @@ for (j in 1:nc.vars){
   cdat <- getTerraClimNormals(coords.lat.long, cvars[j], period, 1:12)[[1]]
   plt_dat <- extract(cdat, coords.lat.long)
   if (cvars[j] == "tmax"){
-      val <- apply(plt_dat[,2:ncol(plt_dat)], 1, max)
-  }else if (cvars[j] == "tmin"){
-      val <- apply(plt_dat[,2:ncol(plt_dat)], 1, min)
-  }else if (cvars[j] == "ppt"){
-      val <- apply(plt_dat[,2:ncol(plt_dat)], 1, sum)
-  }else if (cvars[j] %in% c("pet","aet","def")){
-      val <- apply(plt_dat[,5:9], 1, sum)
-  }else {
-      val <- apply(plt_dat[,5:9], 1, mean)
+    val <- apply(plt_dat[,2:ncol(plt_dat)], 1, max)
+  } else if (cvars[j] == "tmin"){
+    val <- apply(plt_dat[,2:ncol(plt_dat)], 1, min)
+  } else if (cvars[j] == "ppt"){
+    val <- apply(plt_dat[,2:ncol(plt_dat)], 1, sum)
+  } else if (cvars[j] %in% c("pet","aet","def")){
+    val <- apply(plt_dat[,5:9], 1, sum)
+  } else {
+    val <- apply(plt_dat[,5:9], 1, mean)
   }
   X.0[, j] <- val
 }

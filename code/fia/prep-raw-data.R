@@ -6,6 +6,8 @@ rm(list=ls())
 library(tidyverse)
 library(sf)
 
+# NOTE: this script will not run as the raw FIA data are not included on GitHub.
+
 # Read in the raw FIA data
 dat <- read_csv("data/spp_plot_list.csv", col_types = list(SPCD = col_integer()))
                 
@@ -51,14 +53,14 @@ dim(dat.out)
 
 coords <- dat %>% group_by(pltID) %>% summarize(LON = first(LON), LAT = first(LAT))
 coords.sf <- st_as_sf(coords, 
-		      coords = c('LON', 'LAT'), 
-		      crs = "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs")
+                      coords = c('LON', 'LAT'), 
+                      crs = "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs")
 coords.sf <- coords.sf %>%
   st_transform(crs = "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=km +no_defs")
 coords.vals <- st_coordinates(coords.sf)
 coords <- data.frame(pltID = coords.sf$pltID, 
-		     LON = coords.vals[, 1], 
-		     LAT = coords.vals[, 2])
+                     LON = coords.vals[, 1], 
+                     LAT = coords.vals[, 2])
 
 any(duplicated(coords[,c("LON","LAT")]))
 

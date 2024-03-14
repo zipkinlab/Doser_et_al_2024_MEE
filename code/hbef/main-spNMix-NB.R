@@ -17,14 +17,14 @@ low.dist <- quantile(dist.coords, 0.01)
 mean.dist <- mean(dist.coords)
 max.dist <- max(dist.coords)
 prior.list <- list(beta.normal = list(0, 100),
-		   alpha.normal = list(0, 2.72),
+                   alpha.normal = list(0, 2.72),
                    kappa.unif = c(0, 100), 
                    phi = c(3 / max.dist, 3 / low.dist), 
                    sigma.sq = c(2, 1))
 # Starting values ---------------------
 inits.list <- list(alpha = 0, beta = 0, w = rep(0, nrow(data.hbef$coords)),
-		   kappa = 1, phi = 3 / mean.dist, sigma.sq = 1,
-		   N = apply(data.hbef$y, 1, max, na.rm = TRUE))
+                   kappa = 1, phi = 3 / mean.dist, sigma.sq = 1,
+                   N = apply(data.hbef$y, 1, max, na.rm = TRUE))
 # Tuning values -----------------------
 # Good starting values for the tuning parameters would be the estimated 
 # standard deviation of the resulting estimates. 
@@ -46,9 +46,9 @@ out <- spNMix(abund.formula = ~ scale(elev) + I(scale(elev)^2),
               tuning = tuning.list,
               inits = inits.list,
               priors = prior.list,
-	      cov.model = 'exponential',
-	      NNGP = TRUE,
-	      n.neighbors = 5,
+              cov.model = 'exponential',
+              NNGP = TRUE,
+              n.neighbors = 5,
               family = 'NB',
               accept.rate = 0.43,
               n.omp.threads = 1,
@@ -60,4 +60,3 @@ out <- spNMix(abund.formula = ~ scale(elev) + I(scale(elev)^2),
 
 # Save results
 save(out, file = 'results/hbef-spNMix-NB-fit.rda')
-

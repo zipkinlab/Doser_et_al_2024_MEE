@@ -6,8 +6,9 @@ library(spAbundance)
 
 # Get chain number from command line run ----------------------------------
 chain <- as.numeric(commandArgs(trailingOnly = TRUE))
-# Alternatively, if not running the script from the command line:
-# chain <- 1
+# If not running the script from the command line, set the chain number manually:
+# NOTE: uncomment this line if running from the command line.
+chain <- 1
 # Or, can use the n.chains function in spAbundance for sequential runs of chains
 if(length(chain) == 0) base::stop('Need to tell spAbundance the chain number')
 
@@ -22,15 +23,13 @@ priors <- list(phi.unif = c(3 / high.dist, 3 / low.dist),
                sigma.sq.ig = c(2, 1),
                tau.sq.ig = c(2, 1), 
                beta.normal = list(mean = 0, var = 1000))
-# Load initial values for spatial random effects from previous model run
-load("data/fia-sp-eco-inits.rda")
+# Initial values from previous model run
 inits <- list(beta = c(5.87, -0.65, -1.21, -0.11, 0.55),
-	      sigma.sq.mu = 0.272,
-	      sigma.sq = 2.41,
-	      phi = 0.0089,
-	      tau.sq = 4.433,
-              w = w.means)
-
+              sigma.sq.mu = 0.272,
+              sigma.sq = 2.41,
+              phi = 0.0089,
+              tau.sq = 4.433)
+# Tuning variance for phi
 tuning.list <- list(phi = 0.02)
 
 # Use square root of biomass to better approximate normal distribution and 
@@ -45,14 +44,14 @@ n.thin <- 20
 n.chains <- 1
 
 out <- spAbund(formula = ~ scale(elev) + scale(tmax) + I(scale(tmax)^2) + 
-	                   scale(tcc) + (scale(tcc) | ecoregion),
-		  data = data.list, priors = priors, inits = inits,
-		  tuning = tuning.list,
-	          n.neighbors = 5, cov.model = 'exponential', NNGP = TRUE,
-		  family = 'Gaussian',
-	          n.batch = n.batch, batch.length = batch.length,
-	          n.burn = n.burn, accept.rate = 0.43, n.thin = n.thin,
-	          n.chains = n.chains, n.report = 1, n.omp.threads = 5)
+                           scale(tcc) + (scale(tcc) | ecoregion),
+               data = data.list, priors = priors, inits = inits,
+               tuning = tuning.list,
+               n.neighbors = 5, cov.model = 'exponential', NNGP = TRUE,
+               family = 'Gaussian',
+               n.batch = n.batch, batch.length = batch.length,
+               n.burn = n.burn, accept.rate = 0.43, n.thin = n.thin,
+               n.chains = n.chains, n.report = 1, n.omp.threads = 5)
 
 # Save to hard drive ------------------------------------------------------
 save(out, file = paste0('/mnt/disk4/jeff/DFKZ23/results/fia-sp-ecoregion-chain-', 

@@ -13,10 +13,10 @@ data.hbef$y <- data.hbef$y[which(dimnames(hbefCount2015$y)[[1]] == 'BTBW'), , ]
 # Specify priors, initial values, tuning values for spAbundance -----------
 # Priors ------------------------------
 prior.list <- list(beta.normal = list(0, 100),
-		   alpha.normal = list(0, 2.72))
+                   alpha.normal = list(0, 2.72))
 # Starting values ---------------------
 inits.list <- list(alpha = 0, beta = 0,
-		   N = apply(data.hbef$y, 1, max, na.rm = TRUE))
+                   N = apply(data.hbef$y, 1, max, na.rm = TRUE))
 # Tuning values -----------------------
 # Good starting values for the tuning parameters would be the estimated 
 # standard deviation of the resulting estimates. 

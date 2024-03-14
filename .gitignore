@@ -30,4 +30,6 @@ results/nmix-sim-results.rda
 code/neon/scratch.R
 code/fia/get-cov-data.R
 code/fia/test-fuzzed.R
-
+.Rhistory
+anonymized/
+.Rproj.user

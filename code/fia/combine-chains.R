@@ -5,21 +5,25 @@ rm(list = ls())
 library(spAbundance)
 library(coda)
 
+# NOTE: this script will not run as the full model results are too large
+#       for GitHub. Result files can be produced by running the "main-*" files, 
+#       which will then allow you to run this script (changing the directories below)
+
 # Combine objects from three chains into one ------------------------------
 combine.chains <- function(out.1, out.2, out.3) {
   out <- list()
   beta.samples <- mcmc.list(out.1$beta.samples, 
-  			  out.2$beta.samples,
-  			  out.3$beta.samples)
+                            out.2$beta.samples,
+                            out.3$beta.samples)
   tau.sq.samples <- mcmc.list(out.1$tau.sq.samples, 
-  			  out.2$tau.sq.samples,
-  			  out.3$tau.sq.samples)
+                              out.2$tau.sq.samples,
+                              out.3$tau.sq.samples)
   out$rhat$beta <- gelman.diag(beta.samples)$psrf[, 2]
   out$rhat$tau.sq <- gelman.diag(tau.sq.samples)$psrf[, 2]
   if (class(out.1) == 'spAbund') {
     theta.samples <- mcmc.list(out.1$theta.samples, 
-    			       out.2$theta.samples,
-    			       out.3$theta.samples)
+                               out.2$theta.samples,
+                               out.3$theta.samples)
     out$rhat$theta <- gelman.diag(theta.samples)$psrf[, 2]
     out$theta.samples <- rbind(out.1$theta.samples, out.2$theta.samples, out.3$theta.samples)
     out$coords <- out.1$coords
@@ -30,13 +34,15 @@ combine.chains <- function(out.1, out.2, out.3) {
     out$type <- out.1$type
   }
   if (out.1$muRE) {
-    out$sigma.sq.mu.samples <- rbind(out.1$sigma.sq.mu.samples, out.2$sigma.sq.mu.samples, 
-          			   out.3$sigma.sq.mu.samples)
-    out$beta.star.samples <- rbind(out.1$beta.star.samples, out.2$beta.star.samples, 
-				   out.3$beta.star.samples)
+    out$sigma.sq.mu.samples <- rbind(out.1$sigma.sq.mu.samples, 
+                                     out.2$sigma.sq.mu.samples, 
+                                     out.3$sigma.sq.mu.samples)
+    out$beta.star.samples <- rbind(out.1$beta.star.samples, 
+                                   out.2$beta.star.samples, 
+                                   out.3$beta.star.samples)
     sigma.sq.mu.samples <- mcmc.list(out.1$sigma.sq.mu.samples, 
-  			  out.2$sigma.sq.mu.samples,
-  			  out.3$sigma.sq.mu.samples)
+                                     out.2$sigma.sq.mu.samples,
+                                     out.3$sigma.sq.mu.samples)
     out$rhat$sigma.sq.mu <- gelman.diag(sigma.sq.mu.samples)$psrf[, 2]
     out$ESS$sigma.sq.mu <- effectiveSize(out$sigma.sq.mu.samples)
     

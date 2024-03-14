@@ -54,14 +54,14 @@ summary(ppc.nmix.visit)
 # Non-spatial N-mixture with Poisson distribution for abundance
 load('results/hbef-NMix-poisson-pred-results.rda')
 plot.df <- data.frame(Easting = hbefElev$Easting,
-		      Northing = hbefElev$Northing,
-		      elev = hbefElev$val,
-		      mu.0.nmix.mean = mu.0.nmix.mean,
-		      mu.0.nmix.sd = mu.0.nmix.sd)
+                      Northing = hbefElev$Northing,
+                      elev = hbefElev$val,
+                      mu.0.nmix.mean = mu.0.nmix.mean,
+                      mu.0.nmix.sd = mu.0.nmix.sd)
 
 coords.sf <- st_as_sf(x = plot.df,
-		      coords = c('Easting', 'Northing'),
-		      crs = "+proj=utm +zone=19 +units=m +datum=NAD83")
+                      coords = c('Easting', 'Northing'),
+                      crs = "+proj=utm +zone=19 +units=m +datum=NAD83")
 
 # Read in a shapefile of the HBEF watersheds to get the outline of the forest.
 hbef <- st_read('data/hbef-spatial/', 'hbef_wsheds')
@@ -74,10 +74,10 @@ nmix.mean.plot <- ggplot(data = hbef) +
   geom_stars(data = coords.stars, aes(x = Easting, y = Northing, fill = mu.0.nmix.mean)) +
   geom_sf(alpha = 0, col = 'gray58') +
   scale_fill_gradient2(midpoint = 0, low = '#B2182B', mid = 'white', high = '#2166AC',
-  	               na.value = NA) +
+                       na.value = NA) +
   theme_bw(base_size = 14) +
   labs(fill = 'Expected\nAbundance', x = 'Longitude', y = 'Latitude', 
-       title = '(A) Posterior Mean') +
+       title = '(a) Posterior Mean') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1), 
         text = element_text(family="LM Roman 10"),
         plot.title = element_text(size = 14))
@@ -87,10 +87,10 @@ nmix.sd.plot <- ggplot(data = hbef) +
   geom_stars(data = coords.stars, aes(x = Easting, y = Northing, fill = mu.0.nmix.sd)) +
   geom_sf(alpha = 0, col = 'gray58') +
   scale_fill_gradient2(midpoint = 0, low = '#B2182B', mid = 'white', high = '#2166AC',
-  	               na.value = NA) +
+                       na.value = NA) +
   theme_bw(base_size = 14) +
   labs(fill = 'Expected\nAbundance', x = 'Longitude', y = 'Latitude', 
-       title = '(B) Standard Deviation') +
+       title = '(b) Standard Deviation') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1), 
         text = element_text(family="LM Roman 10"),
         plot.title = element_text(size = 14))
@@ -99,4 +99,3 @@ nmix.sd.plot <- ggplot(data = hbef) +
 plot_grid(nmix.mean.plot, nmix.sd.plot, ncol = 1)
 # Save figure to hard drive if desired.
 ggsave("figures/Figure-S2.png", height = 8, width = 7, units = 'in', bg = 'white')
-

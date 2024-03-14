@@ -8,8 +8,10 @@ library(tidyverse)
 library(sf)
 library(stars)
 
+# NOTE: this script will not run as the raw FIA data are not included on 
+#       GitHub. Contact the first author (doserjef@msu.edu) if you want to run this.
+
 # Load data ---------------------------------------------------------------
-# MAKE SURE YOU ARE USING THE FUZZED DATA
 load("data/fuzzed_forest_plot_spp_data.RData")
 # Spatial coordinates
 load("data/fuzzed_forest_plot_coords.RData")
@@ -40,8 +42,8 @@ y <- apply(y.bio, 2, sum)
 # Get tree canopy cover from NLCD -----------------------------------------
 my.proj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=km +no_defs"
 coords.sf <- st_as_sf(as.data.frame(coords),
-		      coords = c('x', 'y'),
-		      crs = my.proj)
+                      coords = c('x', 'y'),
+                      crs = my.proj)
 tcc.us <- read_stars("/mnt/disk1/data/tcc-nlcd/nlcd_tcc_conus_2021_v2021-4.tif")
 coords.tcc <- coords.sf %>%
   st_transform(crs = st_crs(tcc.us))
@@ -76,14 +78,12 @@ coords.sf <- coords.sf[-bad.sites, ]
 
 # Format for spAbundance --------------------------------------------------
 covs <- data.frame(elev = X[, 'elev'], 
-		   ppt = X[, 'ppt'], 
+                   ppt = X[, 'ppt'], 
                    tmax = X[, 'tmax'], 
                    tmin = X[, 'tmin'], 
                    ecoregion = ecoregionL3, 
                    tcc = tcc.cov)
 data.list <- list(y = y,
-		  covs = covs, 
-		  coords = coords)
+                  covs = covs, 
+                  coords = coords)
 save(data.list, file = "data/fia-data.rda")
-
-
