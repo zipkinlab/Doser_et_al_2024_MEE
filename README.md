@@ -2,7 +2,7 @@
 
 ### Methods in Ecology and Evolution 
 
-### Jeffrey W. Doser, Andrew O. Finley, Marc K&eacute;ry, Elise F. Zipkin 
+### [Jeffrey W. Doser](https://www.jeffdoser.com/), [Andrew O. Finley](https://www.finley-lab.com/), [Marc K&eacute;ry](https://www.mbr-pwrc.usgs.gov/pubanalysis/keryroylebook/), [Elise F. Zipkin](https://zipkinlab.org/) 
 
 ### Package [Website](https://www.jeffdoser.com/files/spabundance-web/) and [Repository](https://github.com/doserjef/spAbundance/)
 
