@@ -1,8 +1,10 @@
 # spAbundance: An R package for single-species and multi-species spatially-explicit abundance models 
 
+### [Jeffrey W. Doser](https://www.jeffdoser.com/), [Andrew O. Finley](https://www.finley-lab.com/), [Marc K&eacute;ry](https://www.mbr-pwrc.usgs.gov/pubanalysis/keryroylebook/), [Elise F. Zipkin](https://zipkinlab.org/) 
+
 ### Methods in Ecology and Evolution 
 
-### [Jeffrey W. Doser](https://www.jeffdoser.com/), [Andrew O. Finley](https://www.finley-lab.com/), [Marc K&eacute;ry](https://www.mbr-pwrc.usgs.gov/pubanalysis/keryroylebook/), [Elise F. Zipkin](https://zipkinlab.org/) 
+### Code/Data DOI: [![DOI](https://zenodo.org/badge/774694026.svg)](https://zenodo.org/doi/10.5281/zenodo.10841650)
 
 ### Package [Website](https://www.jeffdoser.com/files/spabundance-web/) and [Repository](https://github.com/doserjef/spAbundance/)
 
