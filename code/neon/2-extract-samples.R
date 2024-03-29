@@ -1,6 +1,6 @@
-# extract-samples.R: this script extracts MCMC samples and Rhat values from 
-#                    the full multi-species model objects, which are too large
-#                    to put onto GitHub.
+# 2-extract-samples.R: this script extracts MCMC samples and Rhat values from 
+#                      the full multi-species model objects, which are too large
+#                      to put onto GitHub.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

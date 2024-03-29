@@ -1,6 +1,6 @@
-# predict-NMix.R: script to predict abundance across Hubbard Brook Experimental
-#                 Forest for the Black-throated Blue Warbler using a non-spatial
-#                 Poisson N-mixture model (the top performing model).
+# 2-predict-NMix.R: script to predict abundance across Hubbard Brook Experimental
+#                   Forest for the Black-throated Blue Warbler using a non-spatial
+#                   Poisson N-mixture model (the top performing model).
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spOccupancy)

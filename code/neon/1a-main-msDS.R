@@ -1,5 +1,5 @@
-# main-msDS.R: fit a multi-species distance sampling model to estimate
-#              density of 16 bird species in the Disney Wilderness Preserve. 
+# 1a-main-msDS.R: fit a multi-species distance sampling model to estimate
+#                 density of 16 bird species in the Disney Wilderness Preserve. 
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

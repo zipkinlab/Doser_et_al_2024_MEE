@@ -1,8 +1,8 @@
-# get-waic-and-samples.rda: this script extracts the WAIC for each of the 
-#                           four candidate models. This script will not 
-#                           run on GitHub, as the model objects are too 
-#                           large. The objects created by the script are
-#                           available on GitHub.
+# 3b-get-waic-and-samples.rda: this script extracts the WAIC for each of the 
+#                              four candidate models. This script will not 
+#                              run on GitHub, as the model objects are too 
+#                              large. The objects created by the script are
+#                              available on GitHub.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

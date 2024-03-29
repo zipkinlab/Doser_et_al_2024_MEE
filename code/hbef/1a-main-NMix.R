@@ -1,6 +1,6 @@
-# main-NMix.R: fit a non-spatial N-mixture model with a Poisson distribution
-#              to estimate abundance of Black-throated Blue Warblers across
-#              Hubbard Brook Experimental Forest.
+# 1a-main-NMix.R: fit a non-spatial N-mixture model with a Poisson distribution
+#                 to estimate abundance of Black-throated Blue Warblers across
+#                 Hubbard Brook Experimental Forest.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 set.seed(400)

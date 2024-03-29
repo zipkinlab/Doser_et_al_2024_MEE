@@ -1,5 +1,5 @@
-# summary.R: summarize results from analysis of black-throated blue warbler
-#            abundance using N-mixture models in spAbundance
+# 3-summary.R: summarize results from analysis of black-throated blue warbler
+#              abundance using N-mixture models in spAbundance
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(tidyverse)

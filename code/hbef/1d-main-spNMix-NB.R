@@ -1,6 +1,6 @@
-# main-spNMix.R: fit a spatial N-mixture model with a Poisson distribution
-#                to estimate abundance of Black-throated Blue Warblers across
-#                Hubbard Brook Experimental Forest.
+# 1d-main-spNMix-NB.R: fit a spatial N-mixture model with a negative binomial distribution
+#                      to estimate abundance of Black-throated Blue Warblers across
+#                      Hubbard Brook Experimental Forest.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 set.seed(400)
@@ -18,11 +18,12 @@ mean.dist <- mean(dist.coords)
 max.dist <- max(dist.coords)
 prior.list <- list(beta.normal = list(0, 100),
                    alpha.normal = list(0, 2.72),
+                   kappa.unif = c(0, 100), 
                    phi = c(3 / max.dist, 3 / low.dist), 
                    sigma.sq = c(2, 1))
 # Starting values ---------------------
 inits.list <- list(alpha = 0, beta = 0, w = rep(0, nrow(data.hbef$coords)),
-                   phi = 3 / mean.dist, sigma.sq = 1,
+                   kappa = 1, phi = 3 / mean.dist, sigma.sq = 1,
                    N = apply(data.hbef$y, 1, max, na.rm = TRUE))
 # Tuning values -----------------------
 # Good starting values for the tuning parameters would be the estimated 
@@ -30,6 +31,7 @@ inits.list <- list(alpha = 0, beta = 0, w = rep(0, nrow(data.hbef$coords)),
 tuning.list <- list(phi = 0.5, beta = 0.1, alpha = 0.1, w = 0.5, kappa = 0.2)
 
 # Fit the model -----------------------------------------------------------
+# Small
 n.batch <- 5000
 batch.length <- 25
 n.burn <- 85000
@@ -47,7 +49,7 @@ out <- spNMix(abund.formula = ~ scale(elev) + I(scale(elev)^2),
               cov.model = 'exponential',
               NNGP = TRUE,
               n.neighbors = 5,
-              family = 'Poisson',
+              family = 'NB',
               accept.rate = 0.43,
               n.omp.threads = 1,
               verbose = TRUE,
@@ -57,5 +59,4 @@ out <- spNMix(abund.formula = ~ scale(elev) + I(scale(elev)^2),
               n.chains = n.chains)
 
 # Save results
-save(out, file = 'results/hbef-spNMix-poisson-fit.rda')
-
+save(out, file = 'results/hbef-spNMix-NB-fit.rda')

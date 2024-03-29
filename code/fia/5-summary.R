@@ -1,4 +1,4 @@
-# summary.R: this script summarizes results from the FIA biomass case study
+# 5-summary.R: this script summarizes results from the FIA biomass case study
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)
@@ -8,7 +8,7 @@ library(sf)
 library(viridis)
 library(MCMCvis)
 library(stars)
-library(ggpubr)
+library(patchwork)
 
 # Load the data -----------------------------------------------------------
 load("data/fia-data.rda")
@@ -107,7 +107,7 @@ y.ci.width.plot <- ggplot() +
   geom_sf(data = usa, alpha = 0) +
   scale_fill_gradientn(colors = plasma(10), na.value = NA) +
   theme_bw(base_size = 14) +
-  labs(fill = "", title = '(d) 95% credible interval width') +
+  labs(fill = "", title = '(d) 95% CI for biomass') +
   theme(legend.position = c(0.92, 0.28), 
         plot.title = element_text(size = 14), 
         legend.title = element_text(size = 12),
@@ -117,6 +117,6 @@ y.ci.width.plot <- ggplot() +
         text = element_text(family = 'LM Roman 10'))
 
 # Figure 2
-my.plot <- ggarrange(points.plot, beta.tcc.plot, y.med.plot, y.ci.width.plot, ncol = 2, nrow = 2)
+my.plot <- points.plot + beta.tcc.plot + y.med.plot + y.ci.width.plot
 ggsave(my.plot, file = 'figures/Figure-2.png', width = 10, height = 7, units = 'in', 
        bg = 'white')

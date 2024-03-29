@@ -1,7 +1,7 @@
-# pred-main.R: code to predict forest AGB across the continental US using 
-#              a spatial linear mixed model with a random slope of tree
-#              canopy cover. This script will not run as the model object
-#              is too large for GitHub.
+# 4-pred-main.R: code to predict forest AGB across the continental US using 
+#                a spatial linear mixed model with a random slope of tree
+#                canopy cover. This script will not run as the model object
+#                is too large for GitHub.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

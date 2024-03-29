@@ -1,7 +1,7 @@
-# get-data.R: this script generates the FIA data into the format necessary
-#             for fitting models in spAbundance. This script will not run, 
-#             as the raw FIA data are not included on GitHub. Note that the 
-#             FIA data here are the fuzzed locations.
+# 1c-get-data.R: this script generates the FIA data into the format necessary
+#                for fitting models in spAbundance. This script will not run, 
+#                as the raw FIA data are not included on GitHub. Note that the 
+#                FIA data here are the fuzzed locations.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(tidyverse)

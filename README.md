@@ -26,42 +26,42 @@ All code and resulting model objects were created and saved using spAbundance v0
 
 ### [code/neon](./code/neon)
 
-Contains all code to fit models and summarize results for the bird hierarchical distance sampling case study using data from NEON in the Disney Wilderness Preserve. Note the `extract-samples.R` script will not run successfully, as the full model objects are too large to include on GitHub. However, these objects can be generated first by running the `main-*.R` files if desired, and the complete model results can still be summarized using the `summary.R` figure using smaller objects created in the `extract-samples.R` script.
+Contains all code to fit models and summarize results for the bird hierarchical distance sampling case study using data from NEON in the Disney Wilderness Preserve. Note the `2-extract-samples.R` script will not run successfully, as the full model objects are too large to include on GitHub. However, these objects can be generated first by running the `1*-main-*.R` files if desired, and the complete model results can still be summarized without having to rerun the model by using the `4-summary.R` figure using smaller objects created in the `2-extract-samples.R` script.
 
-+ `extract-samples.R`: extracts MCMC samples and Rhat values from the full multi-species model objects, which are too large to put on GitHub.
-+ `main-lfMsDS.R`: script to fit a multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
-+ `main-msDS.R`: script to fit a multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
-+ `main-sfMsDS.R`: script to fit a spatial multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
-+ `predict-sfMsDS.R`: script to predict density across the preserve using results from the spatially-explicit hierarchical distance sampling model.
-+ `summary.R`: script to summarize the results from the Disney Wilderness Preserve case study.
++ `1a-main-msDS.R`: script to fit a multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
++ `1b-main-lfMsDS.R`: script to fit a multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
++ `1c-main-sfMsDS.R`: script to fit a spatial multi-species distance sampling model with species correlations to estimate density of the 16 bird species.
++ `2-extract-samples.R`: extracts MCMC samples and Rhat values from the full multi-species model objects, which are too large to put on GitHub.
++ `3-predict-sfMsDS.R`: script to predict density across the preserve using results from the spatially-explicit hierarchical distance sampling model.
++ `4-summary.R`: script to summarize the results from the Disney Wilderness Preserve case study.
 
 ### [code/hbef](./code/hbef)
 
 Contains all code to fit models and summarize results for the Black-throated Blue Warbler case study using data from the Hubbard Brook Experimental Forest.
 
-+ `main-NMix.R`: script to fit a non-spatial Poisson N-mixture model.
-+ `main-NMix-NB.R`: script to fit a non-spatial negative binomial N-mixture model.
-+ `main-spNMix.R`: script to fit a spatial Poisson N-mixture model.
-+ `main-spNMix-NB.R`: script to fit a spatial negative binomial N-mixture model.
-+ `predict-NMix.R`: script to predict abundance across HBEF using a Poisson N-mixture model.
-+ `summary.R`: script to summarize results from the Black-throated Blue Warbler case study. 
++ `1a-main-NMix.R`: script to fit a non-spatial Poisson N-mixture model.
++ `1b-main-NMix-NB.R`: script to fit a non-spatial negative binomial N-mixture model.
++ `1c-main-spNMix.R`: script to fit a spatial Poisson N-mixture model.
++ `1d-main-spNMix-NB.R`: script to fit a spatial negative binomial N-mixture model.
++ `2-predict-NMix.R`: script to predict abundance across HBEF using a Poisson N-mixture model.
++ `3-summary.R`: script to summarize results from the Black-throated Blue Warbler case study. 
 
 ### [code/fia](./code/fia)
 
-Contains all code to fit models and summarize results for the forest aboveground biomass case study using data from the US Forest Service Forest Inventory and Analysis Program. Note that the data included here and used in the manuscript contains the "fuzzed coordinates". These coordinates are not the exact locations of the FIA plots, as FIA adds a small amount of random noise to plot locations to protect ownership privacy and ensure ecological integrity. Note that only the `main-*.R` files and `summary.R` files can be run using the data and files included on GitHub, as the raw FIA data and the full model result files from `spAbundance` are too large to include on GitHub. However, this still allows all models to be run and all figures and results to be extracted using smaller objects that are available on GitHub.
+Contains all code to fit models and summarize results for the forest aboveground biomass case study using data from the US Forest Service Forest Inventory and Analysis Program. Note that the data included here and used in the manuscript contains the "fuzzed coordinates". These coordinates are not the exact locations of the FIA plots, as FIA adds a small amount of random noise to plot locations to protect ownership privacy and ensure ecological integrity. Note that the `1*.R` files cannot be run using the data and files included on GitHub, as the raw FIA data are too large to include on GitHub. However, all subsequent files can still be run,  and all figures and results using smaller objects that are available on GitHub allows the `5-summary.R` script to run without needing to run the models yourself.
 
-+ `combine-chains.R`: script to combine chains from three chains run in parallel into one model output file.
-+ `get-cov-data.R`: script to calculate the covariates for use in the FIA case study. This calculates a variety of potential covariates, which are not all used in the case study.
-+ `get-data.R`: script that generates the FIA data into the format necessary for fitting models in `spAbundance`.  
-+ `get-pred-data.R`: script to extract the grid for prediction across the US.
-+ `get-waic-and-samples.R`: this script extracts the WAIC for each of the four candidate models. 
-+ `main-nonspatial.R`: script to fit a linear mixed model for the FIA biomass data with a random ecoregion intercept.
-+ `main-ecoregion.R`: script to fit a linear mixed model with a random slope of tree canopy cover by ecoregion and a random intercept of ecoregion.
-+ `main-sp.R`: script to fit a spatial linear mixed model.
-+ `main-sp-ecoregion.R`: script to fit a spatial linear mixed model with a random slope of tree canopy cover by ecoregion.
-+ `pred-main.R`: code to predict forest AGB across the continental US using a spatial linear mixed model with a random slope of tree canopy cover.
-+ `prep-raw-data.R`: script to prepare the raw FIA data into a more usable format.
-+ `summary.R`: script that summarizes results from the FIA biomass case study.
++ `1a-prep-raw-data.R`: script to prepare the raw FIA data into a more usable format.
++ `1b-get-cov-data.R`: script to calculate the covariates for use in the FIA case study. This calculates a variety of potential covariates, which are not all used in the case study.
++ `1c-get-data.R`: script that generates the FIA data into the format necessary for fitting models in `spAbundance`.  
++ `1d-get-pred-data.R`: script to extract the grid for prediction across the US.
++ `2a-main-nonspatial.R`: script to fit a linear mixed model for the FIA biomass data with a random ecoregion intercept.
++ `2b-main-ecoregion.R`: script to fit a linear mixed model with a random slope of tree canopy cover by ecoregion and a random intercept of ecoregion.
++ `2c-main-sp.R`: script to fit a spatial linear mixed model.
++ `2d-main-sp-ecoregion.R`: script to fit a spatial linear mixed model with a random slope of tree canopy cover by ecoregion.
++ `3a-combine-chains.R`: script to combine chains from three chains run in parallel into one model output file.
++ `3b-get-waic-and-samples.R`: this script extracts the WAIC for each of the four candidate models. 
++ `4-pred-main.R`: code to predict forest AGB across the continental US using a spatial linear mixed model with a random slope of tree canopy cover.
++ `5-summary.R`: script that summarizes results from the FIA biomass case study.
 
 ### [data](./data)
 

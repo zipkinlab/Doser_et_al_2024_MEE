@@ -1,5 +1,5 @@
-# summary.R: this script summarizes results from the Central Florida 
-#            bird case study.
+# 4-summary.R: this script summarizes results from the Central Florida 
+#              bird case study.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

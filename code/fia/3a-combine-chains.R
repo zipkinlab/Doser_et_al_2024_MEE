@@ -1,5 +1,5 @@
-# combine-chains.R: script to combine chains from three separate model 
-#                   runs into one model output file.  
+# 3a-combine-chains.R: script to combine chains from three separate model 
+#                      runs into one model output file.  
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

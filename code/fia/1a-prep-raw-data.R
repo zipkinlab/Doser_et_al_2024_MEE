@@ -1,6 +1,6 @@
-# prep-raw-data.R: script to prepare the raw FIA data into a more usable format.
-#                  This script will not run as the "spp_plot_list.csv" is too 
-#                  large to place on Github. 
+# 1a-prep-raw-data.R: script to prepare the raw FIA data into a more usable format.
+#                     This script will not run as the "spp_plot_list.csv" is too 
+#                     large to place on Github. 
 # Authors: Andrew O. Finley and Jeffrey W. Doser
 rm(list=ls())
 library(tidyverse)

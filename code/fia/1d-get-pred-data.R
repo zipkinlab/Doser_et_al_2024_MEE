@@ -1,6 +1,6 @@
-# get-pred-data.R: this script extracts the grid for prediction across
-#                  the US. This script will not run as the raw FIA coordinates
-#                  are not available on GitHub.
+# 1d-get-pred-data.R: this script extracts the grid for prediction across
+#                     the US. This script will not run as the raw FIA coordinates
+#                     are not available on GitHub.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(tidyverse)

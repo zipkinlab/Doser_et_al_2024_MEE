@@ -1,6 +1,6 @@
-# predict-sfMsDS.R: this script predict density for the sixteen bird species
-#                   across the Disney Wilderness Preserve using results from 
-#                   a spatially-explicit hierarchical distance sampling model.
+# 3-predict-sfMsDS.R: this script predict density for the sixteen bird species
+#                     across the Disney Wilderness Preserve using results from 
+#                     a spatially-explicit hierarchical distance sampling model.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)

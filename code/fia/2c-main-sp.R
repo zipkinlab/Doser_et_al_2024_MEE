@@ -1,4 +1,4 @@
-# main-sp.R: script to fit a spatial linear mixed model.
+# 2c-main-sp.R: script to fit a spatial linear mixed model.
 # Author: Jeffrey W. Doser
 rm(list = ls())
 library(spAbundance)
@@ -6,7 +6,7 @@ library(spAbundance)
 # Get chain number from command line run ----------------------------------
 chain <- as.numeric(commandArgs(trailingOnly = TRUE))
 # If not running the script from the command line, set the chain number manually:
-# NOTE: uncomment this line if running from the command line.
+# NOTE: comment this line if running from the command line.
 chain <- 1
 # Or, can use the n.chains function in spAbundance for sequential runs of chains
 if(length(chain) == 0) base::stop('Need to tell spAbundance the chain number')
