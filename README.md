@@ -1,4 +1,4 @@
-# spAbundance: An R package for single-species and multi-species spatially-explicit abundance models 
+# [spAbundance: An R package for single-species and multi-species spatially-explicit abundance models](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14332)
 
 ### [Jeffrey W. Doser](https://www.jeffdoser.com/), [Andrew O. Finley](https://www.finley-lab.com/), [Marc K&eacute;ry](https://www.mbr-pwrc.usgs.gov/pubanalysis/keryroylebook/), [Elise F. Zipkin](https://zipkinlab.org/) 
 
@@ -90,3 +90,4 @@ All result files (or smaller versions of result files that can be placed on GitH
 + `fia-pred-results.rda`: prediction results from the top performing model for the FIA case study.
 + `fia-waic-results.rda`: WAIC results from all four candidate models for the FIA case study. 
 
+### [Published PDF](Doser_etal_2024_MEE.pdf)
